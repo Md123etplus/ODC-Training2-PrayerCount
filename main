@@ -1,0 +1,27 @@
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  Serial.begin(115200);//allow us to show some stuff in console
+}
+
+void loop() {
+  static int compteur=0;
+  // put your main code here, to run repeatedly:
+  int addButton=digitalRead(2);
+  int resetButton=digitalRead(3);
+  if(addButton){
+    compteur++;
+    Serial.println(compteur);
+  }
+  if(resetButton){
+    compteur=0;
+    Serial.println(compteur);
+  }
+  if(compteur==3){
+    Serial.println("Compte limite atteinte!!! Retour a zero automatique");
+    Serial.print(compteur);
+    Serial.print(" --> 0");
+  }
+  delay(150);
+}
